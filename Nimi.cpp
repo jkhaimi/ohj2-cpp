@@ -1,4 +1,3 @@
-// Nimi.cpp
 #include "Nimi.h"
 
 int Nimi::seuraavaNro = 1;
@@ -65,31 +64,25 @@ size_t Nimi::hashCode() const {
     return static_cast<size_t>(tunnusNro);
 }
 
-// Nimet.h
-#ifndef NIMET_H
-#define NIMET_H
+bool Nimi::tasmaa(const std::string& hakuehto, int kentta) const {
+    if (kentta == 0) return nimi.find(hakuehto) != std::string::npos;
+    if (kentta == 1) return artisti.find(hakuehto) != std::string::npos;
+    return false;
+}
 
-#include "Nimi.h"
-#include <vector>
-#include <string>
-#include <stdexcept>
+void Nimi::tallenna(std::ostream& out) const {
+    out << tunnusNro << "|" << nimi << "|" << artisti << std::endl;
+}
 
-class Nimet {
-private:
-    std::vector<Nimi> alkiot;
-    std::string tiedostonPerusNimi = "nimet";
-    bool muutettu = false;
+bool Nimi::lue(std::istream& in) {
+    std::string rivi;
+    if (!std::getline(in, rivi)) return false;
+    auto erottaja = rivi.find('|');
+    if (erottaja == std::string::npos) return false;
 
-public:
-    Nimet() = default;
-    void lisaa(const Nimi& nimi);
-    const Nimi& anna(int i) const;
-    int getLkm() const;
-    void tallenna() const;
-    void lueTiedostosta();
-    void setTiedostonPerusNimi(const std::string& nimi);
-    std::string getTiedostonNimi() const;
-    std::string getBakNimi() const;
-};
-
-#endif
+    tunnusNro = std::stoi(rivi.substr(0, erottaja));
+    auto toinenErottaja = rivi.find('|', erottaja + 1);
+    nimi = rivi.substr(erottaja + 1, toinenErottaja - erottaja - 1);
+    artisti = rivi.substr(toinenErottaja + 1);
+    return true;
+}

@@ -15,12 +15,10 @@ void Tiedot::tallenna() const {
     std::string tiedostoNimi = getTiedostonNimi();
     std::string bakNimi = getBakNimi();
 
-    // Luo varmuuskopio
     if (std::filesystem::exists(tiedostoNimi)) {
         std::filesystem::rename(tiedostoNimi, bakNimi);
     }
 
-    // Kirjoita tiedostoon
     std::ofstream tiedosto(tiedostoNimi);
     if (!tiedosto) throw std::runtime_error("Tiedoston avaus epäonnistui: " + tiedostoNimi);
 

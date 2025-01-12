@@ -4,6 +4,11 @@
 int main() {
     Biisit biisit;
 
+    // Nimet nimet;
+    // nimet.setTiedostonPerusNimi("tiedosto");  // Aseta tiedoston nimi
+    // nimet.tallenna();  // Kutsu tallenna-funktiota
+
+
     try {
         Nimi nimi1, nimi2;
         nimi1.rekisteroi();
@@ -15,17 +20,17 @@ int main() {
         biisit.lisaa(nimi1);
         biisit.lisaa(nimi2);
 
-        Tieto tieto1, tieto2, tieto3;
+        Tieto tieto1, tieto2;
         tieto1.rekisteroi();
         tieto1.taytaTrapTiedoilla(nimi1.getTunnusNro());
         tieto2.rekisteroi();
+        // tieto2.setGenre("Rock");
+        // tieto2.setLaatu("Bängeri");
         tieto2.taytaTrapTiedoilla(nimi2.getTunnusNro());
-        tieto3.rekisteroi();
-        tieto3.taytaTrapTiedoilla(nimi2.getTunnusNro());
+
 
         biisit.lisaa(tieto1);
         biisit.lisaa(tieto2);
-        biisit.lisaa(tieto3);
 
         biisit.tallenna();
         biisit.tulosta();

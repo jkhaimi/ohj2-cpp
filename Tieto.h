@@ -1,4 +1,3 @@
-#ifndef TIETO_H
 #define TIETO_H
 
 #include <string>
@@ -6,9 +5,7 @@
 #include <sstream>
 #include <iomanip>
 
-/**
- * Luokka Tieto, joka huolehtii biisien genreistä ja laadusta.
- */
+
 class Tieto {
 private:
     int tunnusNro;
@@ -42,4 +39,3 @@ public:
     size_t hashCode() const;
 };
 
-#endif // TIETO_H

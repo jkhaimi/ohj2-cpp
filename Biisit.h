@@ -1,4 +1,3 @@
-#ifndef BIISIT_H
 #define BIISIT_H
 
 #include "Nimet.h"
@@ -22,32 +21,32 @@ public:
         tiedot.lisaa(tieto);
     }
 
-    // int poista(const Nimi& nimi) {
-    //     int tunnus = nimi.getTunnusNro();
-    //     int poistettu = nimet.poista(tunnus);
-    //     tiedot.poistaNimenTiedot(tunnus);
-    //     return poistettu;
-    // }
+    int poista(const Nimi& nimi) {
+        int tunnus = nimi.getTunnusNro();
+        int poistettu = nimet.poista(tunnus);
+        tiedot.poistaNimenTiedot(tunnus);
+        return poistettu;
+    }
 
     void poistaTieto(const Tieto& tieto) {
         tiedot.poista(tieto);
     }
 
-    // std::vector<Nimi*> etsi(const std::string& hakuehto, int k) {
-    //     return nimet.etsi(hakuehto, k);
-    // }
+    std::vector<Nimi*> etsi(const std::string& hakuehto, int k) {
+        return nimet.etsi(hakuehto, k);
+    }
 
     std::vector<Tieto> annaTiedot(const Nimi& nimi) {
         return tiedot.annaTiedot(nimi.getTunnusNro());
     }
 
     void lueTiedostosta(const std::string& nimi) {
-        // nimet.lueTiedostosta(nimi);
+        nimet.lueTiedostosta(nimi);
         tiedot.lueTiedostosta(nimi);
     }
 
     void tallenna() {
-        // nimet.tallenna();
+        nimet.tallenna();
         tiedot.tallenna();
     }
 
@@ -63,5 +62,3 @@ public:
         }
     }
 };
-
-#endif

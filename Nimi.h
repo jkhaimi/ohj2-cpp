@@ -1,5 +1,3 @@
-// Nimi.h
-#ifndef NIMI_H
 #define NIMI_H
 
 #include <string>
@@ -35,6 +33,11 @@ public:
 
     bool operator==(const Nimi& other) const;
     size_t hashCode() const;
-};
 
-#endif // NIMI_H
+    bool tasmaa(const std::string& hakuehto, int kentta) const;
+    void tallenna(std::ostream& out) const;
+    bool lue(std::istream& in);
+
+
+
+};
